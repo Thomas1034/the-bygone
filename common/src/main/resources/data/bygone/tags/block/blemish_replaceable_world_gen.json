@@ -1,0 +1,31 @@
+{
+  "values": [
+    "#minecraft:base_stone_overworld",
+    "#minecraft:dirt",
+    "#minecraft:terracotta",
+    "#minecraft:nylium",
+    "#minecraft:base_stone_nether",
+    "minecraft:sand",
+    "minecraft:red_sand",
+    "minecraft:gravel",
+    "minecraft:soul_sand",
+    "minecraft:soul_soil",
+    "minecraft:calcite",
+    "minecraft:smooth_basalt",
+    "minecraft:clay",
+    "minecraft:dripstone_block",
+    "minecraft:end_stone",
+    "minecraft:red_sandstone",
+    "minecraft:sandstone",
+    "bygone:bystone",
+    "bygone:byslate",
+    "minecraft:moss_block",
+    "minecraft:deepslate_bricks",
+    "minecraft:deepslate_tiles",
+    "minecraft:cobbled_deepslate",
+    "minecraft:cracked_deepslate_bricks",
+    "minecraft:cracked_deepslate_tiles",
+    "minecraft:polished_deepslate",
+    "bygone:glow_gravel"
+  ]
+}

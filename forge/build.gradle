@@ -48,6 +48,8 @@ sourceSets.main.resources.srcDir 'src/generated/resources'
 dependencies {
     compileOnly project(":common")
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
+
+    modImplementation "curse.maven:jinxedlib-1203401:6268910"
 }
 
 jar {

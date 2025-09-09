@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "bygone:cobbled_bystone",
+    "bygone:cobbled_byslate",
+    "bygone:oceanstone"
+  ]
+}

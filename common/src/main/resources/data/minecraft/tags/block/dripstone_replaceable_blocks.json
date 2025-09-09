@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:base_stone_overworld",
+    "bygone:amber_sand",
+    "bygone:amber_sandstone",
+    "bygone:amber"
+  ]
+}
