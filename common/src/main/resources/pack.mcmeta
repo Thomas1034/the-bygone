@@ -1,15 +1,6 @@
 {
-  "pack": {
-    "pack_format": 48,
-    "description": [
-      {
-        "text": "The Bygone",
-        "color": "green"
-      },
-      {
-        "text": "\n",
-        "color": "yellow"
-      }
-    ]
-  }
+    "pack": {
+        "description": "${mod_name}",
+        "pack_format": 8
+    }
 }

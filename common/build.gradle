@@ -1,10 +1,13 @@
 plugins {
     id 'multiloader-common'
-    id 'net.neoforged.moddev'
+    id 'net.neoforged.moddev.legacyforge'
 }
 
-neoForge {
-    neoFormVersion = neo_form_version
+legacyForge {
+    mcpVersion = minecraft_version
+    if (file("src/main/resources/META-INF/accesstransformer.cfg").exists()) {
+        accessTransformers = ["src/main/resources/META-INF/accesstransformer.cfg"]
+    }
     parchment {
         minecraftVersion = parchment_minecraft
         mappingsVersion = parchment_version
@@ -12,17 +15,8 @@ neoForge {
 }
 
 dependencies {
-
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
-    // fabric and neoforge both bundle mixinextras, so it is safe to use it in common
-    compileOnly group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
-    annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
-
-    compileOnly "net.kyrptonaught.customportalapi:cpapireforged-neo-1.21.1:1.0.11"
-    compileOnly "curse.maven:jinxedlib-1203401:6269067"
-
-    runtimeOnly("io.github.llamalad7:mixinextras-common:0.3.6")
-
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 }
 
 configurations {
@@ -36,16 +30,7 @@ configurations {
     }
 }
 
-sourceSets.main.resources.srcDir 'src/generated/resources'
 artifacts {
     commonJava sourceSets.main.java.sourceDirectories.singleFile
-    sourceSets.main.resources.sourceDirectories.forEach {
-        commonResources it
-    }
-
-    tasks.withType(Javadoc).configureEach {
-        failOnError = false
-        options.addStringOption('Xdoclint:none', '-quiet')
-    }
-
+    commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }
