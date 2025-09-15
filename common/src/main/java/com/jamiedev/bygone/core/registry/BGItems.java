@@ -4,23 +4,13 @@ import com.jamiedev.bygone.Bygone;
 import com.jamiedev.bygone.common.item.*;
 import com.jamiedev.bygone.core.init.JamiesModToolMaterials;
 import com.kekecreations.jinxedlib.core.util.JinxedRegistryHelper;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.item.Item.Properties;
 
 import java.util.function.Supplier;
 
@@ -149,6 +139,13 @@ public class BGItems
 
     public static final Supplier<Item> MUSIC_DISC_SHUFFLE = registerItem("music_disc_shuffle",  () -> new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(BGJukeboxSongs.THIRTEEN)));
 
+    public static final Supplier<Item> GUMBO_BOWL = registerItem("gumbo_bowl",
+            () -> new GumboBowlItem(new Item.Properties()
+                    .stacksTo(1)
+                    .food(null)
+                    .fireResistant()
+            )
+    );
 
     public static void addItemsToItemGroup() {
 

@@ -10,17 +10,10 @@ import com.jamiedev.bygone.common.block.gourds.GourdLanternBlock;
 import com.jamiedev.bygone.common.block.gourds.GourdVineBlock;
 import com.jamiedev.bygone.common.block.shelf.*;
 import com.kekecreations.jinxedlib.core.util.JinxedRegistryHelper;
-
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.features.TreeFeatures;
-
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,7 +28,17 @@ import java.util.function.ToIntFunction;
 import static net.minecraft.world.level.block.Blocks.DIRT;
 
 public class BGBlocks {
+
 Blocks ref;
+    public static final Supplier<Block> GUMBO_POT = registerBlock("gumbo_pot", () ->
+            new GumboPotBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .strength(1.0F)
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY))
+    );
+
 
     public static final Supplier<Block> ICE_BOUQUET = registerBlock("ice_bouquet", () ->
             new IceBouquetBlock(BlockBehaviour.Properties.of()

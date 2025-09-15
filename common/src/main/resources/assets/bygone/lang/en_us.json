@@ -1,4 +1,11 @@
+
 {
+  "item.bygone.gumbo_bowl.nutrition": "Nutrition: %s",
+  "item.bygone.gumbo_bowl.saturation": "Saturation: %s",
+  "item.bygone.gumbo_bowl.ingredients": "Ingredients: %s",
+  "item.bygone.gumbo_bowl.empty": "Empty Gumbo Bowl",
+
+
   "effect.bygone.jamieseffect": "",
   "effect.bygone.updraft": "Updraft",
 
