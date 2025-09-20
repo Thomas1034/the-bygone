@@ -37,8 +37,6 @@ public class BGDataComponentTypes
     );
 
 
-
-
     public static final DataComponentType<GumboBowlComponent> GUMBO_BOWL = register("gumbo_bowl", builder ->
             builder.persistent(GumboBowlComponent.CODEC)
                     .networkSynchronized((StreamCodec<? super RegistryFriendlyByteBuf, GumboBowlComponent>) GumboBowlComponent.CODEC)

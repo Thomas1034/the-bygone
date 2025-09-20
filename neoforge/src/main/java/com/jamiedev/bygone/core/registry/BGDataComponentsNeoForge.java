@@ -1,6 +1,7 @@
 package com.jamiedev.bygone.core.registry;
 
 import com.jamiedev.bygone.Bygone;
+import com.jamiedev.bygone.common.block.entity.GumboBowlComponent;
 import com.jamiedev.bygone.common.item.MaliciousWarHornItem;
 import com.jamiedev.bygone.core.registry.BGDataComponentTypes;
 import com.mojang.serialization.Codec;
@@ -13,6 +14,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -45,7 +47,7 @@ public class BGDataComponentsNeoForge {
             .networkSynchronized(streamCodec)
             .build();
     });
-    
+
     private static final Supplier<DataComponentType<BGDataComponentTypes.EchoGongData>> ECHO_GONG_DATA_SUPPLIER = DATA_COMPONENTS.register("echo_gong_data", () -> {
         Codec<BGDataComponentTypes.EchoGongData> codec = RecordCodecBuilder.create(instance ->
             instance.group(

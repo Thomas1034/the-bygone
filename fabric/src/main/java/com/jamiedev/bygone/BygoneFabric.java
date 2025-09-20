@@ -1,10 +1,7 @@
 package com.jamiedev.bygone;
 
 import com.jamiedev.bygone.core.init.JamiesModTag;
-import com.jamiedev.bygone.core.registry.BGBlocks;
-import com.jamiedev.bygone.core.registry.BGCriteria;
-import com.jamiedev.bygone.core.registry.BGMobEffectsFabric;
-import com.jamiedev.bygone.core.registry.BGDataComponentsFabric;
+import com.jamiedev.bygone.core.registry.*;
 import com.jamiedev.bygone.core.network.PacketHandler;
 import com.jamiedev.bygone.common.util.VexDeathTracker;
 import com.jamiedev.bygone.common.util.ServerTickHandler;
@@ -12,6 +9,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.core.BlockPos;
@@ -69,6 +67,11 @@ public class BygoneFabric implements ModInitializer {
 				VexDeathTracker.onVexDeath(vex, serverLevel);
 			}
 		});
+
+		DefaultItemComponentEvents.MODIFY.register(context -> GumboIngredientRegistry.addIngredients((item, biConsumerConsumer) -> context.modify(
+				item,
+				builder -> biConsumerConsumer.accept(builder::set)
+		)));
 
 		ServerTickEvents.END_SERVER_TICK.register(ServerTickHandler::onServerTick);
 

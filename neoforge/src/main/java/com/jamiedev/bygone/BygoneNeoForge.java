@@ -8,6 +8,7 @@ import com.jamiedev.bygone.core.registry.BGMobEffectsNeoForge;
 import com.jamiedev.bygone.core.registry.BGDataComponentsNeoForge;
 import com.jamiedev.bygone.common.util.VexDeathTracker;
 import com.jamiedev.bygone.common.util.ServerTickHandler;
+import com.jamiedev.bygone.core.registry.GumboIngredientRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
@@ -20,6 +21,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -48,6 +50,7 @@ public class BygoneNeoForge {
         eventBus.addListener(this::spawnPlacements);
         eventBus.addListener(this::createAttributes);
         eventBus.addListener(this::addValidBlocks);
+        eventBus.addListener(this::modifyDefaultComponents);
         NeoForge.EVENT_BUS.addListener(this::entityTick);
         NeoForge.EVENT_BUS.addListener(this::damageEvent);
         NeoForge.EVENT_BUS.addListener(this::onLivingDeath);
@@ -67,8 +70,15 @@ public class BygoneNeoForge {
 
     }
 
+    public void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
+        GumboIngredientRegistry.addIngredients((item, biConsumerConsumer) -> event.modify(
+                item,
+                builder -> biConsumerConsumer.accept(builder::set)
+        ));
+    }
+
+
     void onLivingDeath(LivingDeathEvent event) {
-        //Bygone.LOGGER.info("Entity died: {} (type: {})", event.getEntity().getClass().getSimpleName(), event.getEntity().getType());
         if (event.getEntity() instanceof Vex vex && event.getEntity().level() instanceof ServerLevel serverLevel) {
             VexDeathTracker.onVexDeath(vex, serverLevel);
         }
