@@ -18,7 +18,7 @@ public class GumboIngredientRegistry
         event.accept(
                 Items.ROTTEN_FLESH, builder -> builder.accept(
                         BGDataComponentTypes.GUMBO_BOWL,
-                        new GumboBowlComponent(1, 1, List.of(Items.SPIDER_EYE.toString()))
+                        new GumboBowlComponent(1, 1, List.of(Items.ROTTEN_FLESH.toString()))
                 )
         );
 
